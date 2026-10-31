@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Attendance Management System</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#eaf0ff,#f8fbff);
+  color: #172033;
+}
+
+header {
+  background: white;
+  padding: 22px 8%;
+  font-size: 21px;
+  font-weight: bold;
+  color: #2457d6;
+  box-shadow: 0 2px 12px #00000012;
+}
+
+.hero {
+  text-align: center;
+  padding: 65px 20px 30px;
+}
+
+.hero h1 {
+  font-size: 38px;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  color: #647087;
+  line-height: 1.7;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 30px 20px 70px;
+  flex-wrap: wrap;
+}
+
+.login-card {
+  background: white;
+  width: 320px;
+  padding: 35px 25px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 10px 35px #00000012;
+  transition: transform .3s;
+}
+
+.login-card:hover {
+  transform: translateY(-7px);
+}
+
+.login-card .icon {
+  font-size: 48px;
+}
+
+.login-card h2 {
+  margin: 15px 0;
+}
+
+.login-card p {
+  color: #647087;
+  line-height: 1.6;
+  min-height: 50px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 13px 25px;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.student-btn {
+  background: #2457d6;
+}
+
+.admin-btn {
+  background: #16845b;
+}
+
+.btn:hover {
+  opacity: .85;
+}
+
+footer {
+  text-align: center;
+  padding: 22px;
+  color: #778197;
+  font-size: 13px;
+}
+
+@media(max-width:600px) {
+  .hero h1 {
+    font-size: 29px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  🎓 Student Attendance Management System
+</header>
+
+<section class="hero">
+  <h1>Welcome to Attendance Portal</h1>
+  <p>
+    A Smart and Simple Student Attendance Management System.
+    <br>
+    Please select your login option below.
+  </p>
+</section>
+
+<section class="login-container">
+
+  <div class="login-card">
+    <div class="icon">🎓</div>
+    <h2>Student Login</h2>
+    <p>
+      Access your student dashboard and
+      view your attendance records.
+    </p>
+
+    <a class="btn student-btn"
+       href="https://oracleapex.com/ords/r/student_attendance_management_application/student-attendance-management/login"
+       target="_blank" rel="noopener noreferrer">
+       Student Login →
+    </a>
+  </div>
+
+  <div class="login-card">
+    <div class="icon">🛡️</div>
+    <h2>Admin Login</h2>
+    <p>
+      Access the admin dashboard and
+      manage student attendance records.
+    </p>
+
+    <a class="btn admin-btn"
+       href="https://oracleapex.com/ords/r/student_attendance_management_application/student-attendance-management/login"
+       target="_blank" rel="noopener noreferrer">
+       Admin Login →
+    </a>
+  </div>
+
+</section>
+
+<footer>
+  © 2026 Student Attendance Management System | B.Tech Project
+</footer>
+
+</body>
+</html>

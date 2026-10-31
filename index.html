@@ -1,4 +1,4 @@
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,166 +7,349 @@
 <title>Student Attendance Management System</title>
 
 <style>
+:root {
+  --bg: #f2f6ff;
+  --card: rgba(255,255,255,.88);
+  --text: #172554;
+  --muted: #64748b;
+  --primary: #315ee8;
+  --border: #dce5ff;
+  --nav: rgba(255,255,255,.85);
+}
+
+body.dark {
+  --bg: #0b1224;
+  --card: rgba(24,35,62,.92);
+  --text: #f1f5ff;
+  --muted: #b0bdd5;
+  --primary: #7194ff;
+  --border: #344363;
+  --nav: rgba(15,24,45,.92);
+}
+
 * {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg,#eaf0ff,#f8fbff);
-  color: #172033;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 10% 15%, #829eff35, transparent 30%),
+    radial-gradient(circle at 90% 65%, #a78bfa30, transparent 30%),
+    var(--bg);
+  transition: background .35s, color .35s;
+  min-height: 100vh;
 }
 
-header {
-  background: white;
-  padding: 22px 8%;
-  font-size: 21px;
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 17px 7%;
+  background: var(--nav);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-size: 19px;
   font-weight: bold;
-  color: #2457d6;
-  box-shadow: 0 2px 12px #00000012;
+  color: var(--primary);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+nav a:hover { color: var(--primary); }
+
+.theme-btn {
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  padding: 10px 13px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 17px;
 }
 
 .hero {
   text-align: center;
-  padding: 65px 20px 30px;
+  padding: 85px 20px 35px;
+  animation: appear 1s ease;
+}
+
+.tag {
+  display: inline-block;
+  background: #315ee81a;
+  color: var(--primary);
+  padding: 9px 17px;
+  border-radius: 25px;
+  font-size: 13px;
+  font-weight: bold;
 }
 
 .hero h1 {
-  font-size: 38px;
-  margin-bottom: 12px;
+  font-size: clamp(32px,5vw,52px);
+  margin: 22px 0 15px;
+  line-height: 1.15;
 }
+
+.hero h1 span { color: var(--primary); }
 
 .hero p {
-  color: #647087;
-  line-height: 1.7;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.8;
+  max-width: 650px;
+  margin: auto;
 }
 
-.login-container {
+.login-section {
+  padding: 25px 20px 75px;
   display: flex;
   justify-content: center;
-  gap: 30px;
-  padding: 30px 20px 70px;
   flex-wrap: wrap;
+  gap: 30px;
 }
 
 .login-card {
-  background: white;
-  width: 320px;
-  padding: 35px 25px;
-  border-radius: 18px;
+  width: 340px;
+  padding: 35px 28px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 22px;
   text-align: center;
-  box-shadow: 0 10px 35px #00000012;
-  transition: transform .3s;
+  box-shadow: 0 15px 45px #233b7815;
+  backdrop-filter: blur(12px);
+  transition: transform .35s, box-shadow .35s;
+  animation: appear .8s ease both;
 }
+
+.login-card:nth-child(2) { animation-delay: .2s; }
 
 .login-card:hover {
-  transform: translateY(-7px);
+  transform: translateY(-12px);
+  box-shadow: 0 22px 50px #315ee830;
 }
 
-.login-card .icon {
-  font-size: 48px;
+.card-icon {
+  width: 85px;
+  height: 85px;
+  display: grid;
+  place-items: center;
+  margin: auto;
+  border-radius: 24px;
+  font-size: 43px;
+  background: #315ee81a;
 }
+
+.admin .card-icon { background: #16a36a1a; }
 
 .login-card h2 {
-  margin: 15px 0;
+  margin: 22px 0 12px;
+  font-size: 25px;
 }
 
 .login-card p {
-  color: #647087;
-  line-height: 1.6;
-  min-height: 50px;
+  color: var(--muted);
+  line-height: 1.7;
+  min-height: 55px;
 }
 
-.btn {
+.login-btn {
   display: inline-block;
-  padding: 13px 25px;
+  width: 100%;
+  margin-top: 20px;
+  padding: 15px;
   color: white;
+  background: var(--primary);
+  border-radius: 11px;
   text-decoration: none;
-  border-radius: 8px;
   font-weight: bold;
-  margin-top: 15px;
+  transition: transform .2s, opacity .2s;
 }
 
-.student-btn {
-  background: #2457d6;
+.admin .login-btn { background: #159765; }
+
+.login-btn:hover {
+  transform: scale(1.04);
+  opacity: .9;
 }
 
-.admin-btn {
-  background: #16845b;
+.about {
+  text-align: center;
+  padding: 65px 20px;
+  background: var(--card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
-.btn:hover {
-  opacity: .85;
+.about h2 { font-size: 30px; }
+
+.about p {
+  max-width: 720px;
+  margin: 15px auto;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.feature {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 17px 22px;
+  border-radius: 12px;
+  font-weight: 600;
 }
 
 footer {
   text-align: center;
-  padding: 22px;
-  color: #778197;
+  padding: 25px 15px;
+  color: var(--muted);
   font-size: 13px;
 }
 
-@media(max-width:600px) {
-  .hero h1 {
-    font-size: 29px;
-  }
+@keyframes appear {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media(max-width:650px) {
+  nav { padding: 14px 5%; }
+  .nav-right { gap: 12px; }
+  nav a { font-size: 12px; }
+  .logo { font-size: 15px; }
+  .hero { padding-top: 60px; }
+  .login-card { width: 100%; max-width: 360px; }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  🎓 Student Attendance Management System
-</header>
+<nav>
+  <div class="logo">🎓 Student Portal</div>
 
-<section class="hero">
-  <h1>Welcome to Attendance Portal</h1>
+  <div class="nav-right">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <button class="theme-btn" id="themeToggle"
+      onclick="toggleTheme()" aria-label="Toggle dark mode">🌙</button>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="tag">WELCOME TO OUR DIGITAL CAMPUS</div>
+
+  <h1>Student Attendance<br>
+    <span>Management System</span>
+  </h1>
+
   <p>
-    A Smart and Simple Student Attendance Management System.
-    <br>
-    Please select your login option below.
+    A Smart, Simple and Secure Attendance Management Portal.
+    Select your login type below to continue.
   </p>
 </section>
 
-<section class="login-container">
+<section class="login-section">
 
   <div class="login-card">
-    <div class="icon">🎓</div>
+    <div class="card-icon">🎓</div>
     <h2>Student Login</h2>
     <p>
-      Access your student dashboard and
-      view your attendance records.
+      Access your personal dashboard,
+      check attendance and view your attendance records.
     </p>
 
-    <a class="btn student-btn"
-       href="https://oracleapex.com/ords/r/student_attendance_management_application/student-attendance-management/login"
-       target="_blank" rel="noopener noreferrer">
-       Student Login →
+    <a class="login-btn"
+       href="https://oracleapex.com/ords/r/student_attendance_management_application/student-attendance-management/login">
+       Login as Student →
     </a>
   </div>
 
-  <div class="login-card">
-    <div class="icon">🛡️</div>
+  <div class="login-card admin">
+    <div class="card-icon">🛡️</div>
     <h2>Admin Login</h2>
     <p>
-      Access the admin dashboard and
-      manage student attendance records.
+      Access the administration dashboard
+      and manage student attendance records.
     </p>
 
-    <a class="btn admin-btn"
-       href="https://oracleapex.com/ords/r/student_attendance_management_application/student-attendance-management/login"
-       target="_blank" rel="noopener noreferrer">
-       Admin Login →
+    <a class="login-btn"
+       href="https://oracleapex.com/ords/r/student_attendance_management_application/student-attendance-management/login">
+       Login as Admin →
     </a>
   </div>
 
 </section>
 
+<section class="about" id="about">
+  <h2>About Our Project</h2>
+
+  <p>
+    Student Attendance Management System is a B.Tech project
+    designed to simplify attendance management using Oracle
+    Database and Oracle APEX. It provides separate access
+    options for students and administrators.
+  </p>
+
+  <div class="features">
+    <div class="feature">📊 Attendance Reports</div>
+    <div class="feature">📅 Attendance Tracking</div>
+    <div class="feature">🔐 Secure Login</div>
+    <div class="feature">👨‍🎓 Student Dashboard</div>
+  </div>
+</section>
+
 <footer>
-  © 2026 Student Attendance Management System | B.Tech Project
+  © 2026 Student Attendance Management System
+  <br><br>
+  B.Tech Project | All Rights Reserved
 </footer>
+
+<script>
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+
+  const darkMode = document.body.classList.contains("dark");
+
+  document.getElementById("themeToggle").textContent =
+    darkMode ? "☀️" : "🌙";
+
+  localStorage.setItem("attendanceTheme",
+    darkMode ? "dark" : "light");
+}
+
+const savedTheme = localStorage.getItem("attendanceTheme");
+
+if (savedTheme === "dark") {
+  document.body.classList.add("dark");
+  document.getElementById("themeToggle").textContent = "☀️";
+}
+</script>
 
 </body>
 </html>

@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Session Expired | Student Portal</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  color: white;
+  background: linear-gradient(135deg,#101a40,#42216b,#176b87);
+}
+
+.card {
+  width: 90%;
+  max-width: 470px;
+  padding: 42px 28px;
+  text-align: center;
+  border: 1px solid #ffffff40;
+  border-radius: 22px;
+  background: #ffffff18;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 15px 50px #0005;
+}
+
+.lock {
+  font-size: 65px;
+  animation: float 2s infinite ease-in-out;
+}
+
+@keyframes float {
+  50% { transform: translateY(-10px); }
+}
+
+h1 { font-size: 29px; }
+
+p {
+  color: #e2e8f0;
+  line-height: 1.7;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 13px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.home {
+  background: #38bdf8;
+  color: #082f49;
+}
+
+.login {
+  background: white;
+  color: #312e81;
+}
+
+button:hover { opacity: .85; }
+
+.timer {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #cbd5e1;
+}
+</style>
+</head>
+
+<body>
+<div class="card">
+  <div class="lock">🔒</div>
+  <h1>Session Expired!</h1>
+
+  <p>
+    Your session has expired successfully.<br>
+    Please return to the Student Portal and login again.
+  </p>
+
+  <button class="home" onclick="goHome()">
+    Return to Home
+  </button>
+
+  <button class="login" onclick="goLogin()">
+    Login Again
+  </button>
+
+  <div class="timer">
+    Redirecting to Home in <span id="count">15</span> seconds
+  </div>
+</div>
+
+<script>
+
+// GitHub Home Page
+const homeURL =
+"https://omkarghadage2020.github.io/Student_Attendance_Management_Application/index.html";
+
+// Oracle APEX Login Page
+const loginURL =
+"https://oracleapex.com/ords/r/student_attendance_management_application/student-attendance-management/login";
+
+function goHome() {
+  window.location.replace(homeURL);
+}
+
+function goLogin() {
+  window.location.replace(loginURL);
+}
+
+let seconds = 15;
+
+const timer = setInterval(() => {
+  seconds--;
+  document.getElementById("count").textContent = seconds;
+
+  if (seconds <= 0) {
+    clearInterval(timer);
+    goHome();
+  }
+}, 1000);
+
+</script>
+</body>
+</html>

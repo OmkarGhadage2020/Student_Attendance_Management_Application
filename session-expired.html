@@ -104,20 +104,19 @@ button:hover { opacity: .85; }
 
 <script>
 
-// GitHub Home Page
+
 const homeURL =
 "https://omkarghadage2020.github.io/Student_Attendance_Management_Application/index.html";
 
-
-// Oracle APEX Login Page
 const loginURL =
 "https://oracleapex.com/ords/r/student_attendance_management_application/student-attendance-management/login";
 
 function goHome() {
-    window.location.replace(homeURL);
+  window.location.href = homeURL;
 }
+
 function goLogin() {
-  window.location.replace(loginURL);
+  window.location.href = loginURL;
 }
 
 let seconds = 15;
@@ -128,7 +127,7 @@ const timer = setInterval(() => {
 
   if (seconds <= 0) {
     clearInterval(timer);
-    goHome();
+    window.location.href = homeURL;
   }
 }, 1000);
 
